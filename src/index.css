@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #b42423;
+  --color-brand-dark: #8e1c1b;
+  --color-wine: #9d4141;
+  --color-ink: #1a1717;
+  --color-body: #656565;
+  --color-mist: #f5f5f5;
+
+  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-body: 'Roboto', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .container-fluid {
+    @apply w-full max-w-[1140px] mx-auto px-5 sm:px-6;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-24;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-heading text-sm font-medium
+           transition-colors duration-200 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-dark;
+  }
+
+  .btn-dark {
+    @apply bg-ink text-white hover:bg-black;
+  }
+
+  .btn-outline {
+    @apply border border-white/70 text-white hover:bg-white hover:text-ink;
+  }
+
+  /* Photo with a dark overlay; text sits directly on top */
+  .photo-section {
+    @apply relative isolate overflow-hidden bg-ink bg-cover bg-center text-white;
+  }
+
+  .photo-section::before {
+    content: '';
+    @apply absolute inset-0 -z-10 bg-black/75;
+  }
+
+  .card {
+    @apply bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.08)];
+  }
+
+  .dots {
+    @apply h-24 w-24;
+    background-image: radial-gradient(var(--color-brand) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+  }
+
+  .field {
+    @apply w-full px-4 py-3 rounded border border-gray-300 bg-white text-ink text-sm outline-none
+           placeholder:text-gray-400 focus:border-brand transition-colors;
+  }
+}

@@ -1,0 +1,119 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Phone } from 'lucide-react'
+
+const navLinks = [
+  { label: 'Home', href: '#hero' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'How It Works', href: '#process' },
+  { label: 'Client Records', href: '#clients' },
+  { label: 'Contact Us', href: '#contact' },
+]
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('#hero')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+      const current = navLinks.findLast(({ href }) => {
+        const el = document.querySelector(href)
+        return el && el.getBoundingClientRect().top <= 120
+      })
+      setActive(current?.href ?? '#hero')
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavClick = (href) => {
+    setIsOpen(false)
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
+      <div className="container-fluid">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }} className="flex items-center gap-3">
+            <div className="w-11 h-11 bg-brand flex items-center justify-center">
+              <span className="font-heading text-white font-bold text-xl">G</span>
+            </div>
+            <div className="font-heading leading-tight">
+              <span className="block font-bold text-lg text-ink tracking-wide">GCB</span>
+              <span className="block text-[11px] text-body">Global Collections Books</span>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-7">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                className={`font-heading text-sm transition-colors ${
+                  active === link.href ? 'text-ink' : 'text-brand hover:text-ink'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Desktop CTA */}
+          <a href="tel:+233275286178" className="hidden lg:inline-flex btn btn-primary">
+            <Phone size={16} />
+            +233 275 286 178
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 text-ink"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden overflow-hidden bg-white border-t border-gray-200 shadow-lg"
+          >
+            <div className="container-fluid py-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                  className={`block py-3 font-heading text-sm border-b border-gray-100 ${
+                    active === link.href ? 'text-ink' : 'text-brand'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href="tel:+233275286178" className="btn btn-primary w-full mt-4 mb-2">
+                <Phone size={16} />
+                +233 275 286 178
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  )
+}
