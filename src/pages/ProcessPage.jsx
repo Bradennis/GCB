@@ -6,7 +6,7 @@ export default function ProcessPage() {
     <>
       <PageHeader
         title="How It Works"
-        subtitle="From your first inquiry to delivery at your school, in six simple steps."
+        subtitle="Seven simple steps, from understanding your needs to delivery at your school and beyond."
       />
       <Process />
     </>
