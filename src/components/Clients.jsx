@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, School } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 
 const logos = import.meta.glob('../assets/clients/*.png', { eager: true, import: 'default' })
@@ -15,11 +14,11 @@ const clients = [
   { name: 'Pentecost University College', type: 'University', logo: logo('pentecost') },
   { name: 'KNUST', type: 'University', logo: logo('knust') },
   { name: 'University for Development Studies (Tamale/Wa)', type: 'University', logo: logo('uds') },
-  { name: 'Community University College (Takoradi)', type: 'University', icon: GraduationCap },
+  { name: 'Community University College (Takoradi)', type: 'University', logo: logo('community-university-college') },
   { name: 'Webster University, Ghana', type: 'University', logo: logo('webster') },
   { name: 'Ashesi University', type: 'University', logo: logo('ashesi') },
   { name: 'Volta River Authority (VRA)', type: 'Corporate', logo: logo('vra') },
-  { name: 'Akosombo International School', type: 'School', icon: School },
+  { name: 'Akosombo International School', type: 'School', logo: logo('akosombo-international-school') },
   { name: 'Central Gospel School', type: 'School', logo: logo('central-gospel-school') },
   { name: 'International Community School', type: 'School', logo: logo('international-community-school') },
   { name: 'Springforth Community School', type: 'School', logo: logo('springforth') },
@@ -48,16 +47,12 @@ export default function Clients() {
               className="flex flex-col items-center text-center gap-3 p-5 rounded-xl border border-gray-200 bg-white"
             >
               <div className="h-20 w-full flex items-center justify-center">
-                {client.logo ? (
-                  <img
-                    src={client.logo}
-                    alt={`${client.name} logo`}
-                    loading="lazy"
-                    className="max-h-full max-w-full object-contain"
-                  />
-                ) : (
-                  <client.icon size={40} className="text-brand" />
-                )}
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain"
+                />
               </div>
               <div className="min-w-0">
                 <p className="font-heading font-medium text-ink text-sm">{client.name}</p>
