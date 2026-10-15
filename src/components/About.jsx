@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Target, Eye, Heart, Shield, Rocket, Wallet, BookOpen } from 'lucide-react'
 import SectionHeading from './SectionHeading'
@@ -66,7 +67,7 @@ export default function About() {
               Kingdom, we provide access to premium educational resources for schools, libraries, and
               institutions nationwide.
             </p>
-            <a href="#services" className="btn btn-dark mt-8">Our Services</a>
+            <Link to="/services" className="btn btn-dark mt-8">Our Services</Link>
           </div>
         </motion.div>
         <div

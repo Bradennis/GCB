@@ -1,46 +1,33 @@
 import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'How It Works', href: '#process' },
-  { label: 'Client Records', href: '#clients' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About Us', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'How It Works', to: '/how-it-works' },
+  { label: 'Client Records', to: '/clients' },
+  { label: 'Contact Us', to: '/contact' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [active, setActive] = useState('#hero')
-
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-      const current = navLinks.findLast(({ href }) => {
-        const el = document.querySelector(href)
-        return el && el.getBoundingClientRect().top <= 120
-      })
-      setActive(current?.href ?? '#hero')
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const handleNavClick = (href) => {
-    setIsOpen(false)
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="container-fluid">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#hero" onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }} className="flex items-center gap-3">
+          <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
             <div className="w-11 h-11 bg-brand flex items-center justify-center">
               <span className="font-heading text-white font-bold text-xl">G</span>
             </div>
@@ -48,21 +35,21 @@ export default function Navbar() {
               <span className="block font-bold text-lg text-ink tracking-wide">GCB</span>
               <span className="block text-[11px] text-body">Global Collections Books</span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.label}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className={`font-heading text-sm transition-colors ${
-                  active === link.href ? 'text-ink' : 'text-brand hover:text-ink'
+                to={link.to}
+                end
+                className={({ isActive }) => `font-heading text-sm transition-colors ${
+                  isActive ? 'text-ink' : 'text-brand hover:text-ink'
                 }`}
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -95,16 +82,17 @@ export default function Navbar() {
           >
             <div className="container-fluid py-3">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.label}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                  className={`block py-3 font-heading text-sm border-b border-gray-100 ${
-                    active === link.href ? 'text-ink' : 'text-brand'
+                  to={link.to}
+                  end
+                  onClick={() => setIsOpen(false)}
+                  className={({ isActive }) => `block py-3 font-heading text-sm border-b border-gray-100 ${
+                    isActive ? 'text-ink' : 'text-brand'
                   }`}
                 >
                   {link.label}
-                </a>
+                </NavLink>
               ))}
               <a href="tel:+233275286178" className="btn btn-primary w-full mt-4 mb-2">
                 <Phone size={16} />

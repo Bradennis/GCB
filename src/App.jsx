@@ -1,24 +1,28 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Clients from './components/Clients'
-import Process from './components/Process'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import AboutPage from './pages/AboutPage'
+import ServicesPage from './pages/ServicesPage'
+import ProcessPage from './pages/ProcessPage'
+import ClientsPage from './pages/ClientsPage'
+import ContactPage from './pages/ContactPage'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Process />
-      <Clients />
-      <Contact />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="how-it-works" element={<ProcessPage />} />
+          <Route path="clients" element={<ClientsPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

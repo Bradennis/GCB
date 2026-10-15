@@ -1,11 +1,7 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Phone, Mail } from 'lucide-react'
 import heroImage from '../assets/images/hero.jpg'
-
-const scrollTo = (href) => (e) => {
-  e.preventDefault()
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-}
 
 export default function Hero() {
   return (
@@ -35,12 +31,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">
-            <a href="#services" onClick={scrollTo('#services')} className="btn btn-primary">
+            <Link to="/services" className="btn btn-primary">
               Our Services
-            </a>
-            <a href="#contact" onClick={scrollTo('#contact')} className="btn btn-outline">
+            </Link>
+            <Link to="/contact" className="btn btn-outline">
               Contact Us
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

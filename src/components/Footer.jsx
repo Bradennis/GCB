@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import libraryImage from '../assets/images/library.jpg'
 
@@ -50,12 +51,12 @@ const Instagram = (props) => (
 )
 
 const quickLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'How It Works', href: '#process' },
-  { label: 'Client Records', href: '#clients' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Home', to: '/' },
+  { label: 'About Us', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'How It Works', to: '/how-it-works' },
+  { label: 'Client Records', to: '/clients' },
+  { label: 'Contact Us', to: '/contact' },
 ]
 
 const serviceLinks = [
@@ -136,9 +137,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link to={link.to} className="text-white/60 hover:text-white transition-colors text-sm">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -150,9 +151,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
-                  <a href="#services" className="text-white/60 hover:text-white transition-colors text-sm">
+                  <Link to="/services" className="text-white/60 hover:text-white transition-colors text-sm">
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

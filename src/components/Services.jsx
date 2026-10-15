@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SectionHeading from './SectionHeading'
 import {
@@ -55,11 +56,6 @@ const services = [
   },
 ]
 
-const scrollToContact = (e) => {
-  e.preventDefault()
-  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-}
-
 export default function Services() {
   return (
     <section id="services" className="section-padding bg-mist">
@@ -88,9 +84,9 @@ export default function Services() {
 
               <p className="mt-3 mb-7 text-[15px] leading-relaxed flex-grow">{service.description}</p>
 
-              <a href="#contact" onClick={scrollToContact} className="btn btn-primary self-start">
+              <Link to="/contact" className="btn btn-primary self-start">
                 Request a Quote
-              </a>
+              </Link>
             </motion.div>
           ))}
 
@@ -100,9 +96,9 @@ export default function Services() {
             <p className="mt-4 max-w-md leading-relaxed text-white/90">
               Share your full list and receive one consolidated, competitive quote covering every item.
             </p>
-            <a href="#contact" onClick={scrollToContact} className="btn btn-dark self-start mt-7">
+            <Link to="/contact" className="btn btn-dark self-start mt-7">
               Get a Quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>
