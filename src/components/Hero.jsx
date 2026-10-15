@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Phone, Mail } from 'lucide-react'
 import heroImage from '../assets/images/hero.jpg'
 
 export default function Hero() {
@@ -39,26 +38,6 @@ export default function Hero() {
             </Link>
           </div>
         </motion.div>
-      </div>
-
-      {/* Contact strip */}
-      <div className="border-t border-white/20">
-        <div className="container-fluid py-6 flex flex-col sm:flex-row gap-6 sm:gap-14">
-          <div className="flex items-center gap-4">
-            <Phone size={26} className="text-brand flex-shrink-0" />
-            <div>
-              <h2 className="text-sm font-medium text-white/70">Phone Numbers</h2>
-              <p className="font-medium">+233 275 286 178 &nbsp;/&nbsp; +233 543 882 840</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <Mail size={26} className="text-brand flex-shrink-0" />
-            <div>
-              <h2 className="text-sm font-medium text-white/70">Email</h2>
-              <p className="font-medium">gcollectionsbooks@yahoo.com</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )
