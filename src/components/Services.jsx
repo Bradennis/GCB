@@ -84,7 +84,7 @@ export default function Services() {
 
               <p className="mt-3 mb-7 text-[15px] leading-relaxed flex-grow">{service.description}</p>
 
-              <Link to="/contact" className="btn btn-primary self-start">
+              <Link to={`/contact?service=${encodeURIComponent(service.title)}`} className="btn btn-primary self-start">
                 Request a Quote
               </Link>
             </motion.div>
@@ -96,7 +96,7 @@ export default function Services() {
             <p className="mt-4 max-w-md leading-relaxed text-white/90">
               Share your full list and receive one consolidated, competitive quote covering every item.
             </p>
-            <Link to="/contact" className="btn btn-dark self-start mt-7">
+            <Link to={`/contact?service=${encodeURIComponent('Multiple Services')}`} className="btn btn-dark self-start mt-7">
               Get a Quote
             </Link>
           </div>

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import libraryImage from '../assets/images/library.jpg'
+import { submitForm } from '../lib/contact'
 
 // lucide-react v1 dropped brand icons, so the social icons are inlined here
 function BrandIcon({ size = 24, children }) {
@@ -70,6 +72,52 @@ const serviceLinks = [
 
 const year = new Date().getFullYear()
 
+function NewsletterForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | sending | email | whatsapp | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      setStatus(
+        await submitForm({
+          subject: 'New newsletter subscriber',
+          fields: { Email: email, Request: 'Please add me to the GCB newsletter.' },
+          whatsappText: `Hello GCB, please add me to your newsletter.\n\nEmail: ${email}`,
+        }),
+      )
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <>
+      <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email address"
+          aria-label="Email address"
+          className="field flex-1"
+        />
+        <button type="submit" disabled={status === 'sending'} className="btn btn-primary flex-shrink-0 disabled:opacity-60">
+          {status === 'sending' ? 'Subscribing…' : 'Subscribe'}
+        </button>
+      </form>
+      <p role="status" className="mt-4 text-sm text-white/80 min-h-5">
+        {status === 'email' && 'Thank you for subscribing!'}
+        {status === 'whatsapp' && 'WhatsApp has opened with your request — just press send to subscribe.'}
+        {status === 'error' && 'Sorry, something went wrong. Please try again.'}
+      </p>
+    </>
+  )
+}
+
 export default function Footer() {
   return (
     <footer>
@@ -85,18 +133,7 @@ export default function Footer() {
           <p className="mt-6 max-w-xl mx-auto text-white/80 leading-relaxed">
             Subscribe to our newsletter for the latest educational resources, special offers, and procurement tips.
           </p>
-          <form
-            className="mt-8 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              aria-label="Email address"
-              className="field flex-1"
-            />
-            <button type="submit" className="btn btn-primary flex-shrink-0">Subscribe</button>
-          </form>
+          <NewsletterForm />
         </div>
       </div>
 
