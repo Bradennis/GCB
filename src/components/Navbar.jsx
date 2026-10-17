@@ -26,10 +26,10 @@ export default function Navbar() {
   return (
     <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="container-fluid">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-24 sm:h-28">
           {/* Logo */}
           <Link to="/" onClick={() => setIsOpen(false)} aria-label="Global Collections Books — Home" className="flex items-center">
-            <img src={logo} alt="Global Collections Books" className="h-[76px] sm:h-[84px] w-auto" />
+            <img src={logo} alt="Global Collections Books" className="h-[86px] sm:h-[100px] w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
