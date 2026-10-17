@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
-import emblem from '../assets/gcb-emblem.png'
+import logo from '../assets/gcb-logo.png'
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -26,14 +26,10 @@ export default function Navbar() {
   return (
     <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="container-fluid">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link to="/" onClick={() => setIsOpen(false)} aria-label="Global Collections Books — Home" className="flex items-center gap-3">
-            <img src={emblem} alt="" className="h-12 w-auto" />
-            <div className="font-heading font-semibold uppercase leading-tight">
-              <span className="block text-[13px] sm:text-[15px] text-brand tracking-wide">Global Collections</span>
-              <span className="block text-[13px] sm:text-[15px] text-ink tracking-[0.2em]">Books</span>
-            </div>
+          <Link to="/" onClick={() => setIsOpen(false)} aria-label="Global Collections Books — Home" className="flex items-center">
+            <img src={logo} alt="Global Collections Books" className="h-[76px] sm:h-[84px] w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

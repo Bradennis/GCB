@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import libraryImage from '../assets/images/library.jpg'
-import emblemLight from '../assets/gcb-emblem-light.png'
+import logo from '../assets/gcb-logo.png'
 import { submitForm } from '../lib/contact'
 
 // lucide-react v1 dropped brand icons, so the social icons are inlined here
@@ -143,12 +143,9 @@ export default function Footer() {
         <div className="container-fluid py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <img src={emblemLight} alt="" className="h-10 w-auto" />
-              <div className="font-heading font-semibold uppercase leading-tight text-[13px] whitespace-nowrap">
-                <span className="block text-brand tracking-wide">Global Collections</span>
-                <span className="block text-white tracking-[0.2em]">Books</span>
-              </div>
+            {/* The logo has black artwork, so it sits on a white block against the dark footer */}
+            <div className="inline-block bg-white rounded-xl px-5 py-4 mb-6">
+              <img src={logo} alt="Global Collections Books" className="h-24 w-auto" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Your trusted one-stop procurement partner for all educational needs. Simplifying school
