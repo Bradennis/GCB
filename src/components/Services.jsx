@@ -77,7 +77,7 @@ export default function Services() {
             >
               <service.icon size={44} strokeWidth={1.75} className="text-ink" />
 
-              <h6 className="mt-6 text-xs font-medium uppercase tracking-wider text-brand">
+              <h6 className="mt-6 text-xs font-medium uppercase tracking-wider text-brand-dark">
                 {service.tags.join(' · ')}
               </h6>
               <h3 className="mt-2 text-xl font-medium text-ink">{service.title}</h3>
@@ -91,7 +91,7 @@ export default function Services() {
           ))}
 
           {/* Fills the last row beside the seventh service */}
-          <div className="md:col-span-1 lg:col-span-2 bg-brand text-white p-8 sm:p-10 flex flex-col justify-center">
+          <div className="md:col-span-1 lg:col-span-2 bg-brand-dark text-white p-8 sm:p-10 flex flex-col justify-center">
             <h3 className="text-2xl md:text-3xl font-semibold">Need more than one of these?</h3>
             <p className="mt-4 max-w-md leading-relaxed text-white/90">
               Share your full list and receive one consolidated, competitive quote covering every item.

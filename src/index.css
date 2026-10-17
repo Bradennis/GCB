@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #b42423;
-  --color-brand-dark: #8e1c1b;
-  --color-wine: #9d4141;
+  /* Greens from the GCB logo. brand is the logo green itself, for accents; brand-dark is
+     deep enough for white text (buttons, coloured panels) and for small green text on white. */
+  --color-brand: #21b24b;
+  --color-brand-dark: #167431;
+  --color-brand-deep: #0e4d21;
+  --color-heading: #125f28;
   --color-ink: #1a1717;
   --color-body: #656565;
   --color-mist: #f5f5f5;
-  --color-blush: #fbefef;
+  --color-tint: #ebf7ee;
   --color-gold: #e9a92b;
 
   --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
@@ -49,7 +52,7 @@
   }
 
   .btn-primary {
-    @apply bg-brand text-white hover:bg-brand-dark;
+    @apply bg-brand-dark text-white hover:bg-brand-deep;
   }
 
   .btn-dark {

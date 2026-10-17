@@ -57,7 +57,7 @@ const books = [
   { label: 'Textbooks', className: 'bg-[#2b5ea7] text-white', offset: 'ml-4' },
   { label: 'Stationery', className: 'bg-[#3e8e4f] text-white', offset: 'ml-0' },
   { label: 'Uniforms', className: 'bg-gold text-ink', offset: 'ml-6' },
-  { label: 'Sportswear', className: 'bg-brand text-white', offset: 'ml-2' },
+  { label: 'Sportswear', className: 'bg-[#c8372d] text-white', offset: 'ml-2' },
   { label: 'Printing', className: 'bg-[#3a3f9a] text-white', offset: 'ml-5' },
   { label: '& More', className: 'bg-ink text-white', offset: 'ml-1' },
 ]
@@ -69,7 +69,7 @@ function StepCard({ step, number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: (number % 4) * 0.08 }}
-      className="relative h-full rounded-2xl bg-blush px-6 pt-10 pb-8 text-center"
+      className="relative h-full rounded-2xl bg-tint px-6 pt-10 pb-8 text-center"
     >
       <span className="absolute -top-4 -left-3 w-11 h-11 rounded-full bg-brand-dark text-white font-heading font-semibold text-lg flex items-center justify-center ring-4 ring-white">
         {number}
@@ -108,7 +108,7 @@ export default function Process() {
           <div className="text-center">
             <p className="font-heading text-lg md:text-xl font-semibold text-ink">
               Your School’s Procurement Made{' '}
-              <span className="font-script text-4xl md:text-5xl text-brand align-middle">Simple</span>
+              <span className="font-script text-4xl md:text-5xl text-brand-dark align-middle">Simple</span>
             </p>
             <h2 className="mt-5 inline-block rounded-full bg-brand-dark px-8 py-3 text-xl md:text-3xl font-semibold text-white">
               Our Simple Procurement Process

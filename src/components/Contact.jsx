@@ -127,7 +127,7 @@ export default function Contact() {
             </p>
 
             {status === 'email' ? (
-              <div role="status" className="rounded-lg bg-blush p-6 text-center">
+              <div role="status" className="rounded-lg bg-tint p-6 text-center">
                 <CircleCheck size={40} className="mx-auto text-brand" />
                 <p className="mt-3 font-heading text-lg font-medium text-ink">Thank you, your request has been sent.</p>
                 <p className="mt-2 text-sm">Our team will contact you shortly with your quote.</p>
@@ -182,7 +182,7 @@ export default function Contact() {
                 </label>
 
                 {status === 'error' && (
-                  <p role="alert" className="flex items-start gap-2 text-sm text-brand">
+                  <p role="alert" className="flex items-start gap-2 text-sm text-red-700">
                     <CircleAlert size={18} className="flex-shrink-0 mt-0.5" />
                     <span>
                       Sorry, your request could not be sent ({error}). Please try again, or{' '}

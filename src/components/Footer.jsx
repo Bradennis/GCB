@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import libraryImage from '../assets/images/library.jpg'
+import emblemLight from '../assets/gcb-emblem-light.png'
 import { submitForm } from '../lib/contact'
 
 // lucide-react v1 dropped brand icons, so the social icons are inlined here
@@ -143,12 +144,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 bg-brand flex items-center justify-center">
-                <span className="font-heading text-white font-bold text-xl">G</span>
-              </div>
-              <div className="font-heading leading-tight">
-                <span className="block font-bold text-lg tracking-wide">GCB</span>
-                <span className="block text-[11px] text-white/60">Global Collections Books</span>
+              <img src={emblemLight} alt="" className="h-10 w-auto" />
+              <div className="font-heading font-semibold uppercase leading-tight text-[13px] whitespace-nowrap">
+                <span className="block text-brand tracking-wide">Global Collections</span>
+                <span className="block text-white tracking-[0.2em]">Books</span>
               </div>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">

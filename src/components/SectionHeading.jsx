@@ -6,7 +6,7 @@ export default function SectionHeading({ eyebrow, title, children, center = fals
           {eyebrow}
         </p>
       )}
-      <h2 className={`text-2xl md:text-[2rem] font-semibold uppercase leading-snug ${light ? 'text-white' : 'text-wine'}`}>
+      <h2 className={`text-2xl md:text-[2rem] font-semibold uppercase leading-snug ${light ? 'text-white' : 'text-heading'}`}>
         {title}
       </h2>
       <div className={`mt-4 h-1 w-24 bg-brand ${center ? 'mx-auto' : ''}`} />

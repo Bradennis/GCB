@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone } from 'lucide-react'
+import emblem from '../assets/gcb-emblem.png'
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -27,13 +28,11 @@ export default function Navbar() {
       <div className="container-fluid">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
-            <div className="w-11 h-11 bg-brand flex items-center justify-center">
-              <span className="font-heading text-white font-bold text-xl">G</span>
-            </div>
-            <div className="font-heading leading-tight">
-              <span className="block font-bold text-lg text-ink tracking-wide">GCB</span>
-              <span className="block text-[11px] text-body">Global Collections Books</span>
+          <Link to="/" onClick={() => setIsOpen(false)} aria-label="Global Collections Books — Home" className="flex items-center gap-3">
+            <img src={emblem} alt="" className="h-12 w-auto" />
+            <div className="font-heading font-semibold uppercase leading-tight">
+              <span className="block text-[13px] sm:text-[15px] text-brand tracking-wide">Global Collections</span>
+              <span className="block text-[13px] sm:text-[15px] text-ink tracking-[0.2em]">Books</span>
             </div>
           </Link>
 
@@ -45,7 +44,7 @@ export default function Navbar() {
                 to={link.to}
                 end
                 className={({ isActive }) => `font-heading text-sm transition-colors ${
-                  isActive ? 'text-ink' : 'text-brand hover:text-ink'
+                  isActive ? 'text-ink' : 'text-brand-dark hover:text-ink'
                 }`}
               >
                 {link.label}
@@ -88,7 +87,7 @@ export default function Navbar() {
                   end
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) => `block py-3 font-heading text-sm border-b border-gray-100 ${
-                    isActive ? 'text-ink' : 'text-brand'
+                    isActive ? 'text-ink' : 'text-brand-dark'
                   }`}
                 >
                   {link.label}

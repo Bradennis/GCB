@@ -48,7 +48,7 @@ export default function About() {
     <section id="about" className="bg-white">
       {/* Who We Are */}
       <div className="grid lg:grid-cols-2">
-        <motion.div {...fadeUp} className="bg-brand text-white px-5 sm:px-10 lg:px-16 py-16 lg:py-20 flex">
+        <motion.div {...fadeUp} className="bg-brand-dark text-white px-5 sm:px-10 lg:px-16 py-16 lg:py-20 flex">
           <div className="max-w-xl lg:ml-auto my-auto">
             <p className="font-heading text-sm text-white/75 mb-1">About</p>
             <h2 className="text-3xl md:text-4xl font-semibold">Who We Are</h2>
